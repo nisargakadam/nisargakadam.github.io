@@ -1,247 +1,576 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Nisarga Kadam | AI · Security · Data</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nisarga Kadam | AI · Security · Data</title>
 
-    <style>
-        body {
-            margin: 0;
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background-color: #ffffff;
-            color: #2e1a47;
-        }
-        header {
-            text-align: center;
-            padding: 80px 20px 40px;
-        }
-        h1 {
-            font-size: 3rem;
-            color: #4b2c75;
-            margin-bottom: 10px;
-        }
-        h2 {
-            font-weight: 300;
-            font-size: 1.3rem;
-            color: #6a4c9c;
-        }
-        section {
-            max-width: 900px;
-            margin: 30px auto;
-            padding: 0 20px 10px;
-            line-height: 1.7;
-        }
-        a {
-            color: #7a3ff6;
-            font-weight: 600;
-            text-decoration: none;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
+  <style>
+    :root {
+      --purple-dark: #2b1740;
+      --purple: #7a3ff6;
+      --purple-light: #faf6ff;
+      --text-main: #241832;
+    }
 
-        /* Button */
-        .btn {
-            display: inline-block;
-            margin-top: 16px;
-            padding: 10px 20px;
-            border-radius: 999px;
-            border: 1px solid #7a3ff6;
-            background: #7a3ff6;
-            color: white;
-            font-weight: 600;
-            font-size: 0.95rem;
-            text-decoration: none;
-            transition: 0.2s ease;
-        }
-        .btn:hover {
-            background: #5e2fcb;
-            box-shadow: 0 8px 18px rgba(122, 63, 246, 0.25);
-        }
+    * {
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
 
-        .section-title {
-            font-size: 1.4rem;
-            margin-bottom: 8px;
-            color: #4b2c75;
-        }
+    body {
+      margin: 0;
+      font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: #ffffff;
+      color: var(--text-main);
+    }
 
-        .projects {
-            margin-top: 10px;
-        }
-        .project-card {
-            border: 1px solid #e9ddff;
-            padding: 20px;
-            border-radius: 14px;
-            margin-bottom: 25px;
-            background: #faf6ff;
-            transition: 0.2s ease;
-        }
-        .project-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 10px 25px rgba(122, 63, 246, 0.12);
-        }
+    /* NAVBAR */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: rgba(17, 10, 26, 0.9);
+      color: #f5f0ff;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 24px;
+      backdrop-filter: blur(10px);
+    }
 
-        .item-list {
-            list-style: none;
-            padding-left: 0;
-            margin-top: 8px;
-        }
-        .item-list li {
-            margin-bottom: 14px;
-        }
-        .item-role {
-            font-weight: 600;
-            color: #4b2c75;
-        }
-        .item-meta {
-            font-size: 0.9rem;
-            color: #7b6a9c;
-        }
+    .navbar-left {
+      font-weight: 700;
+      letter-spacing: 0.03em;
+    }
 
-        /* FOOTER */
-        footer {
-            text-align: center;
-            padding: 30px;
-            margin-top: 50px;
-            background: #faf6ff;
-            border-top: 1px solid #e9ddff;
-        }
-        .footer-links a {
-            margin: 0 12px;
-            font-size: 1rem;
-            color: #4b2c75;
-            font-weight: 600;
-        }
-        .footer-links a:hover {
-            color: #7a3ff6;
-        }
-    </style>
+    .navbar-links a {
+      margin-left: 16px;
+      font-size: 0.9rem;
+      text-decoration: none;
+      color: #ddd1ff;
+      font-weight: 500;
+    }
+
+    .navbar-links a:hover {
+      color: #ffffff;
+    }
+
+    /* HERO */
+    .hero {
+      position: relative;
+      min-height: 70vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: left;
+      padding: 120px 20px 80px;
+      color: #ffffff;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(120deg, rgba(16, 6, 40, 0.9), rgba(80, 38, 150, 0.8)),
+        url("https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1600&q=80");
+      background-size: cover;
+      background-position: center;
+      filter: brightness(0.95);
+      z-index: -1;
+    }
+
+    .hero-content {
+      max-width: 900px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 32px;
+    }
+
+    .hero-text {
+      flex: 2 1 260px;
+    }
+
+    .hero-title {
+      font-size: 2.8rem;
+      margin-bottom: 8px;
+    }
+
+    .hero-subtitle {
+      font-size: 1.1rem;
+      opacity: 0.9;
+      margin-bottom: 10px;
+    }
+
+    .hero-typing {
+      font-size: 1rem;
+      font-weight: 500;
+      color: #d6c4ff;
+      margin-bottom: 22px;
+      min-height: 1.4em;
+      white-space: nowrap;
+    }
+
+    .hero-typing span {
+      border-right: 2px solid #fefefe;
+      padding-right: 4px;
+      animation: blink 0.75s step-end infinite;
+    }
+
+    @keyframes blink {
+      50% {
+        border-color: transparent;
+      }
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+      display: inline-block;
+      padding: 10px 20px;
+      border-radius: 999px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: 0.2s ease;
+      border: 1px solid transparent;
+    }
+
+    .btn-primary {
+      background: var(--purple);
+      color: #ffffff;
+      border-color: var(--purple);
+    }
+
+    .btn-primary:hover {
+      background: #5e2fcb;
+      box-shadow: 0 8px 18px rgba(122, 63, 246, 0.35);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: #f4ecff;
+      border-color: rgba(230, 208, 255, 0.8);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(248, 243, 255, 0.12);
+    }
+
+    .hero-tagline {
+      margin-top: 16px;
+      font-size: 0.9rem;
+      max-width: 420px;
+      opacity: 0.9;
+    }
+
+    .hero-right {
+      flex: 1 1 220px;
+      border-radius: 20px;
+      padding: 18px 18px 14px;
+      background: rgba(18, 7, 40, 0.7);
+      border: 1px solid rgba(192, 168, 255, 0.35);
+      box-shadow: 0 12px 35px rgba(7, 0, 21, 0.5);
+      font-size: 0.85rem;
+    }
+
+    .pill {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(122, 63, 246, 0.15);
+      color: #f4e8ff;
+      font-size: 0.72rem;
+      margin-bottom: 8px;
+    }
+
+    .hero-right h3 {
+      margin: 4px 0 10px;
+      font-size: 1rem;
+      color: #fef9ff;
+    }
+
+    .hero-right ul {
+      padding-left: 18px;
+      margin: 8px 0 0;
+      color: #dacfff;
+    }
+
+    .hero-right li {
+      margin-bottom: 4px;
+    }
+
+    /* MAIN SECTIONS */
+    main {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 40px 20px 60px;
+    }
+
+    section {
+      margin-top: 40px;
+    }
+
+    .section-title {
+      font-size: 1.5rem;
+      color: var(--purple-dark);
+      margin-bottom: 8px;
+    }
+
+    .section-subtitle {
+      font-size: 0.9rem;
+      color: #7b6a9c;
+      margin-bottom: 16px;
+    }
+
+    p {
+      line-height: 1.7;
+    }
+
+    /* PROJECT CARDS */
+    .projects {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 20px;
+      margin-top: 10px;
+    }
+
+    @media (min-width: 800px) {
+      .projects {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      }
+    }
+
+    .project-card {
+      border: 1px solid #e9ddff;
+      padding: 18px 18px 16px;
+      border-radius: 14px;
+      background: var(--purple-light);
+      transition: 0.2s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 22px rgba(122, 63, 246, 0.15);
+    }
+
+    .project-card h3 {
+      margin: 0 0 6px;
+      font-size: 1rem;
+      color: var(--purple-dark);
+    }
+
+    .project-meta {
+      font-size: 0.8rem;
+      color: #7b6a9c;
+      margin-bottom: 8px;
+    }
+
+    .project-card a {
+      font-size: 0.85rem;
+    }
+
+    /* LISTS (EXPERIENCE / EDUCATION) */
+    .item-list {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .item-list li {
+      margin-bottom: 16px;
+    }
+
+    .item-role {
+      font-weight: 600;
+      color: var(--purple-dark);
+    }
+
+    .item-meta {
+      font-size: 0.85rem;
+      color: #7b6a9c;
+      margin-bottom: 2px;
+    }
+
+    /* CONTACT / FOOTER */
+    footer {
+      border-top: 1px solid #e9ddff;
+      padding: 24px 20px 28px;
+      text-align: center;
+      background: var(--purple-light);
+      color: #6c5b92;
+      font-size: 0.85rem;
+    }
+
+    .footer-links a {
+      margin: 0 10px;
+      font-weight: 600;
+      text-decoration: none;
+      color: var(--purple-dark);
+    }
+
+    .footer-links a:hover {
+      color: var(--purple);
+    }
+
+    @media (max-width: 600px) {
+      .hero {
+        text-align: left;
+      }
+      .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-    <!-- HEADER -->
-    <header>
-        <h1>Nisarga Kadam</h1>
-        <h2>AI · Security · Data Systems</h2>
+  <!-- NAV -->
+  <nav class="navbar">
+    <div class="navbar-left">Nisarga Kadam</div>
+    <div class="navbar-links">
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#experience">Experience</a>
+      <a href="#education">Education</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
 
-        <a class="btn" href="Kadam_CyberResume.pdf" target="_blank" rel="noopener noreferrer">
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-bg"></div>
+
+    <div class="hero-content">
+      <div class="hero-text">
+        <div class="hero-title">Hi, I'm Nisarga 👋</div>
+        <div class="hero-subtitle">CS grad student · Investment Management Associate · Data / AI security curious</div>
+
+        <div class="hero-typing">
+          <span id="typing-target"></span>
+        </div>
+
+        <div class="hero-buttons">
+          <a class="btn-primary" href="Kadam_CyberResume.pdf" target="_blank" rel="noopener noreferrer">
             View Résumé
-        </a>
-    </header>
+          </a>
+          <a class="btn-secondary" href="#projects">Explore Projects</a>
+        </div>
 
-    <!-- ABOUT -->
-    <section>
-        <p>
-            I'm a CS graduate student and data analyst exploring the intersection of
-            <strong>AI security, machine learning, and trust & integrity systems</strong>.
-            I build projects that analyze how models behave under real-world conditions —
-            focusing on robustness, risk, and data quality.
-        </p>
+        <div class="hero-tagline">
+          I work at the intersection of <strong>AI security, machine learning, and data systems</strong> —
+          with projects in fraud detection, model reliability, and real-world analytics.
+        </div>
+      </div>
 
-        <p>Currently exploring:</p>
+      <aside class="hero-right">
+        <div class="pill">Focus Areas</div>
+        <h3>AI Trust, Integrity & Reliability</h3>
         <ul>
-            <li>LLM reasoning failures & robustness evaluation</li>
-            <li>Fraud / anomaly detection in digital platforms</li>
-            <li>Interpretability & trustworthy AI predictions</li>
-            <li>Data integrity + responsible ML systems</li>
+          <li>Fake review & anomaly detection</li>
+          <li>LLM reasoning / robustness audits</li>
+          <li>Media, marketing, and decision systems</li>
         </ul>
+      </aside>
+    </div>
+  </header>
+
+  <main>
+    <!-- ABOUT -->
+    <section id="about">
+      <h2 class="section-title">About</h2>
+      <p>
+        I'm a CS graduate student and data analyst exploring the intersection of
+        <strong>AI security, machine learning, and trust &amp; integrity systems</strong>.
+        I like building hands-on projects that test how models behave under real-world conditions —
+        focusing on robustness, risk, and data quality.
+      </p>
+      <p>Currently exploring:</p>
+      <ul>
+        <li>LLM reasoning failures &amp; robustness evaluation</li>
+        <li>Fraud / anomaly detection in digital platforms</li>
+        <li>Interpretability &amp; trustworthy AI predictions</li>
+        <li>Data integrity and responsible ML systems</li>
+      </ul>
     </section>
 
     <!-- PROJECTS -->
-    <section>
-        <div class="section-title">Featured Projects</div>
+    <section id="projects">
+      <h2 class="section-title">Featured Projects</h2>
+      <p class="section-subtitle">
+        A few projects that reflect how I think about AI trust, security, and data-driven systems.
+      </p>
 
-        <div class="projects">
+      <div class="projects">
+        <article class="project-card">
+          <h3>🛡 Fake Review Detection (AI Trust &amp; Integrity)</h3>
+          <div class="project-meta">Dec 2024 · NLP · HuggingFace BLAiR · Tableau</div>
+          <p>
+            Built an NLP + HuggingFace BLAiR pipeline detecting fraudulent Amazon reviews
+            with an <strong>81% F1 score</strong>. Identified behavioral patterns
+            (e.g., short overly-positive reviews 32% more likely to be fake) and visualized
+            anomaly clusters in Tableau to strengthen platform trust.
+          </p>
+          <a href="https://github.com/nisargakadam/Influence-of-Fake-Reviews-on-Quality-Amazon-Product-Recommendation" target="_blank">
+            View Project →
+          </a>
+        </article>
 
-            <div class="project-card">
-                <h3>🛡 Fake Review Detection (AI Trust & Integrity) — Dec 2024</h3>
-                <p>
-                    Built an NLP + HuggingFace BLAiR pipeline detecting fraudulent Amazon reviews
-                    (81% F1 score). Identified behavioral anomalies and visualized clusters in Tableau
-                    to strengthen platform trust.
-                </p>
-                <a href="https://github.com/nisargakadam/Amazon-Fake-Review-Detection">View Project →</a>
-            </div>
+        <article class="project-card">
+          <h3>🏀 NBA Playoff Prediction (Pattern &amp; Outlier Analysis)</h3>
+          <div class="project-meta">May 2025 · Random Forest · nba_api</div>
+          <p>
+            Trained and evaluated a Random Forest model on <strong>96+ playoff logs</strong> to
+            identify outlier performance patterns and surface the most predictive KPIs influencing
+            game outcomes. Explored model consistency, variance, and sensitivity across team contexts.
+          </p>
+          <a href="https://github.com/nisargakadam/nba-ecf-win-predictor" target="_blank">
+            View Project →
+          </a>
+        </article>
 
-            <div class="project-card">
-                <h3>🏀 NBA Playoff Prediction (Pattern & Outlier Analysis) — May 2025</h3>
-                <p>
-                    Developed a Random Forest classifier on 96+ playoff logs to identify stability,
-                    outliers, and key performance metrics that predict game outcomes.
-                </p>
-                <a href="https://github.com/nisargakadam/NBA-Playoff-Predictor">View Project →</a>
-            </div>
-
-            <div class="project-card">
-                <h3>📊 Government Spending & Female Labor Participation — May 2023</h3>
-                <p>
-                    Ridge Regression + grid search to evaluate policy effects with strong data integrity
-                    safeguards: multicollinearity checks, consistent preprocessing, and reproducible pipelines.
-                </p>
-                <a href="https://github.com/nisargakadam/Govt-Spending-FLFP">View Project →</a>
-            </div>
-
-        </div>
+        <article class="project-card">
+          <h3>📊 Government Spending &amp; Female Labor Participation</h3>
+          <div class="project-meta">May 2023 · Ridge Regression · Policy Data</div>
+          <p>
+            Applied Ridge Regression with grid search to analyze government spending impacts while
+            ensuring data integrity through multicollinearity checks, consistent feature selection,
+            and reproducible preprocessing pipelines. Highlighted policy implications and structural
+            bias considerations.
+          </p>
+          <a href="https://github.com/nisargakadam/Government-Spending-on-FLPR" target="_blank">
+            View Project →
+          </a>
+        </article>
+      </div>
     </section>
 
     <!-- EXPERIENCE -->
-    <section>
-        <div class="section-title">Experience</div>
-        <ul class="item-list">
-            <li>
-                <div class="item-role">Investment Management Associate – Publicis Health Media</div>
-                <div class="item-meta">New York, NY · 2025 – Present</div>
-                Oversee multi-channel oncology budgets, analyze performance, optimize allocations,
-                and collaborate on financial stewardship using tools like Prisma, CM360, and Tableau.
-            </li>
-
-            <li>
-                <div class="item-role">Data Analyst Intern – Raja Foods & Vegetables</div>
-                <div class="item-meta">Remote · 2023 – 2025</div>
-                Built forecasting models and dashboards across sales, waste optimization,
-                and seasonal inventory trends.
-            </li>
-
-            <li>
-                <div class="item-role">Co-Founder – AIMADETHIS</div>
-                <div class="item-meta">Remote · 2021 – 2023</div>
-                Created generative AI fashion pipelines, marketing analytics dashboards,
-                and customer insights for sustainability-focused retail.
-            </li>
-        </ul>
+    <section id="experience">
+      <h2 class="section-title">Experience</h2>
+      <ul class="item-list">
+        <li>
+          <div class="item-role">Investment Management Associate – Publicis Health Media</div>
+          <div class="item-meta">New York, NY · 2025 – Present</div>
+          <p>
+            Oversee multi-channel oncology media budgets, analyze performance, optimize allocations,
+            and collaborate on financial stewardship using tools like Prisma, CM360, and Tableau.
+          </p>
+        </li>
+        <li>
+          <div class="item-role">Data Analyst Intern – Raja Foods &amp; Vegetables</div>
+          <div class="item-meta">Remote · 2023 – 2025</div>
+          <p>
+            Built forecasting models and dashboards for sales, waste reduction, and seasonal inventory.
+            Used Excel, R, and QuickBooks to turn messy data into actionable decisions.
+          </p>
+        </li>
+        <li>
+          <div class="item-role">Co-Founder – AIMADETHIS</div>
+          <div class="item-meta">Remote · 2021 – 2023</div>
+          <p>
+            Led a generative AI–driven sustainable fashion project, building analytics dashboards,
+            marketing funnels, and experimentation pipelines at the intersection of data, design,
+            and user behavior.
+          </p>
+        </li>
+      </ul>
     </section>
 
     <!-- EDUCATION -->
-    <section>
-        <div class="section-title">Education</div>
-        <ul class="item-list">
-            <li>
-                <div class="item-role">M.A. in Computer Science — CUNY Hunter College</div>
-                <div class="item-meta">Expected May 2027 · New York, NY</div>
-                ML, algorithms, theory, security-focused coursework.
-            </li>
-
-            <li>
-                <div class="item-role">B.S. in Social Data Analytics — Penn State University</div>
-                <div class="item-meta">May 2023 · University Park, PA</div>
-                Quantitative social science, computational methods, behavioral data.
-            </li>
-        </ul>
+    <section id="education">
+      <h2 class="section-title">Education</h2>
+      <ul class="item-list">
+        <li>
+          <div class="item-role">M.A. in Computer Science — CUNY Hunter College</div>
+          <div class="item-meta">Expected May 2027 · New York, NY</div>
+          <p>
+            Coursework in algorithms, machine learning, systems, and theory, with an interest in
+            security-adjacent applications and data-intensive computing.
+          </p>
+        </li>
+        <li>
+          <div class="item-role">B.S. in Social Data Analytics — Penn State University</div>
+          <div class="item-meta">May 2023 · University Park, PA</div>
+          <p>
+            Quantitative social science, statistics, and computational methods applied to
+            real-world policy, labor, and behavioral datasets.
+          </p>
+        </li>
+      </ul>
     </section>
 
-    <!-- FOOTER -->
-    <footer>
-        <div class="footer-links">
-            <a href="https://www.linkedin.com/in/nisarga-kadam" target="_blank">LinkedIn</a>
-            <a href="https://github.com/nisargakadam" target="_blank">GitHub</a>
-            <a href="mailto:nisargakadam@gmail.com">Email</a>
-        </div>
-        <p style="font-size: 0.8rem; margin-top: 10px; color: #7a6a9c;">
-            © 2025 Nisarga Kadam · Built with ♡ and clean purple CSS
-        </p>
-    </footer>
+    <!-- CONTACT -->
+    <section id="contact">
+      <h2 class="section-title">Contact</h2>
+      <p class="section-subtitle">
+        Open to chatting about AI security, data science, media/tech, and fun side projects.
+      </p>
+      <p>
+        💌 Email: <a href="mailto:nisarga.kadam1@gmail.com">nisargakadam@gmail.com</a><br />
+        💼 LinkedIn: <a href="https://www.linkedin.com/in/nisarga-kadam" target="_blank">linkedin.com/in/nisarga-kadam</a><br />
+        💻 GitHub: <a href="https://github.com/nisargakadam" target="_blank">github.com/nisargakadam</a>
+      </p>
+    </section>
+  </main>
 
+  <footer>
+    <div class="footer-links">
+      <a href="https://www.linkedin.com/in/nisarga-kadam" target="_blank">LinkedIn</a>
+      <a href="https://github.com/nisargakadam" target="_blank">GitHub</a>
+      <a href="mailto:nisargakadam@gmail.com">Email</a>
+    </div>
+    <p>© 2025 Nisarga Kadam · Built with clean HTML, CSS, and a tiny bit of JS ✨</p>
+  </footer>
+
+  <!-- TYPING EFFECT SCRIPT -->
+  <script>
+    const typingTarget = document.getElementById("typing-target");
+    const phrases = [
+      "AI Security · ML · Data Systems",
+      "Fraud & Anomaly Detection",
+      "LLM Reasoning & Robustness",
+      "Data Integrity & Responsible AI"
+    ];
+
+    let phraseIndex = 0;
+    let charIndex = 0;
+    let deleting = false;
+
+    function typeLoop() {
+      const current = phrases[phraseIndex];
+
+      if (!deleting) {
+        charIndex++;
+        if (charIndex === current.length + 3) {
+          deleting = true;
+        }
+      } else {
+        charIndex--;
+        if (charIndex === 0) {
+          deleting = false;
+          phraseIndex = (phraseIndex + 1) % phrases.length;
+        }
+      }
+
+      typingTarget.textContent = current.slice(0, charIndex);
+
+      const delay = deleting ? 60 : 90;
+      setTimeout(typeLoop, delay);
+    }
+
+    typeLoop();
+  </script>
 </body>
 </html>
