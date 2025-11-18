@@ -14,12 +14,12 @@
         }
         header {
             text-align: center;
-            padding: 80px 20px 40px 20px;
+            padding: 80px 20px 40px;
         }
         h1 {
             font-size: 3rem;
-            margin-bottom: 10px;
             color: #4b2c75;
+            margin-bottom: 10px;
         }
         h2 {
             font-weight: 300;
@@ -29,7 +29,7 @@
         section {
             max-width: 900px;
             margin: 30px auto;
-            padding: 0 20px 10px 20px;
+            padding: 0 20px 10px;
             line-height: 1.7;
         }
         a {
@@ -58,17 +58,14 @@
         .btn:hover {
             background: #5e2fcb;
             box-shadow: 0 8px 18px rgba(122, 63, 246, 0.25);
-            text-decoration: none;
         }
 
-        /* Subheadings */
         .section-title {
             font-size: 1.4rem;
             margin-bottom: 8px;
             color: #4b2c75;
         }
 
-        /* Project card styling */
         .projects {
             margin-top: 10px;
         }
@@ -77,20 +74,14 @@
             padding: 20px;
             border-radius: 14px;
             margin-bottom: 25px;
-            transition: 0.2s ease;
             background: #faf6ff;
+            transition: 0.2s ease;
         }
         .project-card:hover {
             transform: translateY(-4px);
             box-shadow: 0 10px 25px rgba(122, 63, 246, 0.12);
         }
 
-        h3 {
-            color: #4b2c75;
-            margin-bottom: 8px;
-        }
-
-        /* Experience / education lists */
         .item-list {
             list-style: none;
             padding-left: 0;
@@ -107,6 +98,24 @@
             font-size: 0.9rem;
             color: #7b6a9c;
         }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 30px;
+            margin-top: 50px;
+            background: #faf6ff;
+            border-top: 1px solid #e9ddff;
+        }
+        .footer-links a {
+            margin: 0 12px;
+            font-size: 1rem;
+            color: #4b2c75;
+            font-weight: 600;
+        }
+        .footer-links a:hover {
+            color: #7a3ff6;
+        }
     </style>
 </head>
 
@@ -117,77 +126,61 @@
         <h1>Nisarga Kadam</h1>
         <h2>AI · Security · Data Systems</h2>
 
-        <!-- Resume button (update href to your actual PDF path) -->
-        <a class="btn" href="Nisarga_Kadam_Resume.pdf" target="_blank" rel="noopener noreferrer">
+        <a class="btn" href="Kadam_CyberResume.pdf" target="_blank" rel="noopener noreferrer">
             View Résumé
         </a>
-        <!-- Tip: upload a PDF named "Nisarga_Kadam_Resume.pdf" to this repo's root -->
     </header>
 
-    <!-- ABOUT / INTRO -->
+    <!-- ABOUT -->
     <section>
         <p>
             I'm a CS graduate student and data analyst exploring the intersection of
-            <strong>AI security, machine learning, and trust &amp; integrity systems</strong>.
+            <strong>AI security, machine learning, and trust & integrity systems</strong>.
             I build projects that analyze how models behave under real-world conditions —
             focusing on robustness, risk, and data quality.
         </p>
 
         <p>Currently exploring:</p>
         <ul>
-            <li>LLM reasoning failures &amp; robustness evaluation</li>
+            <li>LLM reasoning failures & robustness evaluation</li>
             <li>Fraud / anomaly detection in digital platforms</li>
-            <li>Interpretability &amp; trustworthiness of AI predictions</li>
-            <li>Data integrity and responsible ML systems</li>
+            <li>Interpretability & trustworthy AI predictions</li>
+            <li>Data integrity + responsible ML systems</li>
         </ul>
     </section>
 
-    <!-- FEATURED PROJECTS -->
+    <!-- PROJECTS -->
     <section>
         <div class="section-title">Featured Projects</div>
 
         <div class="projects">
 
-            <!-- Project 1 -->
             <div class="project-card">
-                <h3>🛡 Fake Review Detection (AI Trust &amp; Integrity) — Dec 2024</h3>
+                <h3>🛡 Fake Review Detection (AI Trust & Integrity) — Dec 2024</h3>
                 <p>
-                    Built an NLP + HuggingFace BLAiR pipeline detecting fraudulent Amazon
-                    reviews with an <strong>81% F1 score</strong>. Discovered behavioral
-                    patterns (e.g., short overly-positive reviews 32% more likely to be fake)
-                    and visualized anomaly clusters in Tableau to strengthen platform trust.
+                    Built an NLP + HuggingFace BLAiR pipeline detecting fraudulent Amazon reviews
+                    (81% F1 score). Identified behavioral anomalies and visualized clusters in Tableau
+                    to strengthen platform trust.
                 </p>
-                <a href="https://github.com/nisargakadam/Amazon-Fake-Review-Detection">
-                    View Project →
-                </a>
+                <a href="https://github.com/nisargakadam/Amazon-Fake-Review-Detection">View Project →</a>
             </div>
 
-            <!-- Project 2 -->
             <div class="project-card">
-                <h3>🏀 NBA Playoff Prediction (Pattern &amp; Outlier Analysis) — May 2025</h3>
+                <h3>🏀 NBA Playoff Prediction (Pattern & Outlier Analysis) — May 2025</h3>
                 <p>
-                    Trained and evaluated a Random Forest model on <strong>96+ playoff logs</strong>
-                    to identify outlier performance patterns and surface the most predictive KPIs
-                    driving game outcomes. Explored variance, stability, and sensitivity across
-                    different team contexts.
+                    Developed a Random Forest classifier on 96+ playoff logs to identify stability,
+                    outliers, and key performance metrics that predict game outcomes.
                 </p>
-                <a href="https://github.com/nisargakadam/NBA-Playoff-Predictor">
-                    View Project →
-                </a>
+                <a href="https://github.com/nisargakadam/NBA-Playoff-Predictor">View Project →</a>
             </div>
 
-            <!-- Project 3 -->
             <div class="project-card">
-                <h3>📊 Government Spending &amp; Female Labor Participation (Bias &amp; Data Integrity Study) — May 2023</h3>
+                <h3>📊 Government Spending & Female Labor Participation — May 2023</h3>
                 <p>
-                    Applied Ridge Regression with grid search to analyze relationships between
-                    government spending and female labor participation. Ensured strong data
-                    integrity through multicollinearity checks, reproducible pipelines, and
-                    interpretable model selection.
+                    Ridge Regression + grid search to evaluate policy effects with strong data integrity
+                    safeguards: multicollinearity checks, consistent preprocessing, and reproducible pipelines.
                 </p>
-                <a href="https://github.com/nisargakadam/Govt-Spending-FLFP">
-                    View Project →
-                </a>
+                <a href="https://github.com/nisargakadam/Govt-Spending-FLFP">View Project →</a>
             </div>
 
         </div>
@@ -200,29 +193,22 @@
             <li>
                 <div class="item-role">Investment Management Associate – Publicis Health Media</div>
                 <div class="item-meta">New York, NY · 2025 – Present</div>
-                <div>
-                    Manage multi-million dollar oncology media budgets across digital, print, and broadcast;
-                    reconcile spend and performance; and collaborate with cross-functional teams to drive
-                    data-informed decisions and measurement.
-                </div>
+                Oversee multi-channel oncology budgets, analyze performance, optimize allocations,
+                and collaborate on financial stewardship using tools like Prisma, CM360, and Tableau.
             </li>
+
             <li>
-                <div class="item-role">Data Analyst Intern – Raja Foods &amp; Vegetables</div>
+                <div class="item-role">Data Analyst Intern – Raja Foods & Vegetables</div>
                 <div class="item-meta">Remote · 2023 – 2025</div>
-                <div>
-                    Used Excel, R, and QuickBooks to analyze sales patterns, forecast inventory, and reduce
-                    spoilage. Built dashboards and reports translating messy data into actionable insights
-                    for a small business environment.
-                </div>
+                Built forecasting models and dashboards across sales, waste optimization,
+                and seasonal inventory trends.
             </li>
+
             <li>
                 <div class="item-role">Co-Founder – AIMADETHIS</div>
                 <div class="item-meta">Remote · 2021 – 2023</div>
-                <div>
-                    Led a generative AI–driven sustainable fashion project, building analytics dashboards,
-                    marketing funnels, and experimentation pipelines at the intersection of data, design,
-                    and user behavior.
-                </div>
+                Created generative AI fashion pipelines, marketing analytics dashboards,
+                and customer insights for sustainability-focused retail.
             </li>
         </ul>
     </section>
@@ -232,23 +218,30 @@
         <div class="section-title">Education</div>
         <ul class="item-list">
             <li>
-                <div class="item-role">M.A. in Computer Science – CUNY Hunter College</div>
+                <div class="item-role">M.A. in Computer Science — CUNY Hunter College</div>
                 <div class="item-meta">Expected May 2027 · New York, NY</div>
-                <div>
-                    Coursework in algorithms, machine learning, systems, and theory, with a focus on
-                    data-intensive and security-adjacent applications.
-                </div>
+                ML, algorithms, theory, security-focused coursework.
             </li>
+
             <li>
-                <div class="item-role">B.S. in Social Data Analytics – Penn State University</div>
+                <div class="item-role">B.S. in Social Data Analytics — Penn State University</div>
                 <div class="item-meta">May 2023 · University Park, PA</div>
-                <div>
-                    Quantitative social science, statistics, and computational methods applied to real-world
-                    policy, labor, and behavioral datasets.
-                </div>
+                Quantitative social science, computational methods, behavioral data.
             </li>
         </ul>
     </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-links">
+            <a href="https://www.linkedin.com/in/nisarga-kadam" target="_blank">LinkedIn</a>
+            <a href="https://github.com/nisargakadam" target="_blank">GitHub</a>
+            <a href="mailto:nisargakadam@gmail.com">Email</a>
+        </div>
+        <p style="font-size: 0.8rem; margin-top: 10px; color: #7a6a9c;">
+            © 2025 Nisarga Kadam · Built with ♡ and clean purple CSS
+        </p>
+    </footer>
 
 </body>
 </html>
