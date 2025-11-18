@@ -1,367 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Nisarga Kadam | Portfolio</title>
-
-  <!-- Google Font -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
-    rel="stylesheet"
-  />
-
-  <!-- CSS -->
-  <link rel="stylesheet" href="styles.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nisarga Kadam | AI + Security</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            background-color: #ffffff;
+            color: #2e1a47;
+        }
+        header {
+            text-align: center;
+            padding: 80px 20px;
+        }
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            color: #4b2c75;
+        }
+        h2 {
+            font-weight: 300;
+            font-size: 1.2rem;
+            color: #6a4c9c;
+        }
+        section {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 0 20px;
+            line-height: 1.7;
+        }
+        a {
+            color: #7a3ff6;
+            font-weight: 600;
+            text-decoration: none;
+        }
+        .projects {
+            margin-top: 20px;
+        }
+        .project-card {
+            border: 1px solid #e9ddff;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            transition: 0.2s;
+        }
+        .project-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0px 10px 20px rgba(122, 63, 246, 0.1);
+        }
+    </style>
 </head>
 <body>
-  <!-- Navigation -->
-  <header class="nav">
-    <div class="nav-inner container">
-      <a href="#top" class="logo">NK</a>
-      <nav class="nav-links" id="nav-links">
-        <a href="#about">About</a>
-        <a href="#experience">Experience</a>
-        <a href="#education">Education</a>
-        <a href="#projects">Projects</a>
-        <a href="#skills">Skills</a>
-        <a href="#contact">Contact</a>
-      </nav>
-      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">
-        ☰
-      </button>
-    </div>
-  </header>
+    <header>
+        <h1>Nisarga Kadam</h1>
+        <h2>AI • Security • Data Systems</h2>
+    </header>
 
-  <!-- Hero -->
-  <main id="top">
-    <section class="hero container">
-      <div class="hero-text">
-        <p class="hero-tag">Data · AI · Media</p>
-        <h1>Hi, I’m <span class="accent">Nisarga Kadam</span></h1>
-        <h2 class="hero-subtitle">
-          Investment Management Associate @ Publicis Health Media &amp; M.A. Computer Science student at CUNY Hunter.
-        </h2>
-        <p class="hero-description">
-          I bridge data, storytelling, and AI to make smarter decisions in media, product, and analytics.
-          I love turning messy datasets into clear insights, whether that’s modeling NBA games,
-          detecting fake Amazon reviews, or optimizing multimillion-dollar media budgets.
-        </p>
-        <div class="hero-actions">
-          <a href="#projects" class="btn primary">View Projects</a>
-          <a href="#contact" class="btn secondary">Let’s Connect</a>
-        </div>
-        <div class="hero-meta">
-          <span>📍 New York City</span>
-          <span>🎓 CUNY Hunter · Penn State</span>
-        </div>
-      </div>
-      <div class="hero-card">
-        <div class="hero-card-inner">
-          <p class="hero-card-title">Current Focus</p>
-          <ul>
-            <li>AI &amp; analytics for media investment</li>
-            <li>End-to-end data projects (SQL · Python · Tableau)</li>
-            <li>LLM + sports &amp; consumer behavior experiments</li>
-          </ul>
-          <a
-            href="YOUR_RESUME_LINK_HERE"
-            class="hero-resume-link"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Download Résumé ↗
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- About -->
-    <section id="about" class="section">
-      <div class="container">
-        <h2 class="section-title">About</h2>
-        <div class="two-column">
-          <div>
-            <p>
-              I’m a Computer Science graduate student at <strong>CUNY Hunter College</strong> with a
-              background in <strong>Social Data Analytics</strong> from <strong>Penn State</strong>.
-              My work sits at the intersection of data, product, and media – from
-              <strong>fraud detection on Amazon reviews</strong> to
-              <strong>NBA game prediction</strong> and <strong>healthcare media analytics</strong>.
-            </p>
-            <p>
-              During the day, I work on <strong>investment management</strong> at
-              <strong>Publicis Health Media</strong>, managing cross-channel oncology media budgets and
-              partnering with strategy, investment, and analytics teams.
-              At night (and on weekends), I design data projects that explore how people make decisions:
-              what we buy, watch, click on, and trust.
-            </p>
-          </div>
-          <div class="about-highlights">
-            <div class="pill">Data Analytics &amp; BI</div>
-            <div class="pill">AI &amp; ML</div>
-            <div class="pill">Media &amp; Marketing</div>
-            <div class="pill">Product-adjacent Thinking</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Experience -->
-    <section id="experience" class="section alt">
-      <div class="container">
-        <h2 class="section-title">Experience</h2>
-        <div class="cards-grid">
-          <article class="card">
-            <h3>Investment Management Associate</h3>
-            <h4>Publicis Health Media · New York, NY</h4>
-            <p class="card-meta">Jun 2025 – Present</p>
-            <ul>
-              <li>Manage <strong>$10M+</strong> cross-channel oncology media budgets (digital, print, broadcast).</li>
-              <li>Reconcile ~<strong>$800K</strong> in monthly invoices using Mediaocean Prisma and Excel.</li>
-              <li>Partner with analytics to use CM360 &amp; DoubleVerify insights and surface savings opportunities and ROI improvements.</li>
-            </ul>
-          </article>
-
-          <article class="card">
-            <h3>Data Analyst Intern</h3>
-            <h4>Raja Foods and Vegetables</h4>
-            <p class="card-meta">Jun 2023 – Mar 2025</p>
-            <ul>
-              <li>Analyzed seasonal sales trends using <strong>R, Excel, and QuickBooks</strong> to optimize inventory and reduce spoilage.</li>
-              <li>Built dashboards and slide decks to translate insights into clear business recommendations.</li>
-            </ul>
-          </article>
-
-          <article class="card">
-            <h3>Co-Founder · Data &amp; Product</h3>
-            <h4>AIMADETHIS</h4>
-            <p class="card-meta">May 2021 – Mar 2023</p>
-            <ul>
-              <li>Used <strong>SQL, Tableau, and generative AI</strong> to design a sustainable fashion experience.</li>
-              <li>Increased B2C conversion rates by tailoring user journeys and content based on analytics.</li>
-            </ul>
-          </article>
-
-          <article class="card">
-            <h3>Teaching &amp; Mentorship</h3>
-            <h4>Microsoft TEALS · Girls Who Code · T.E.A.M Baruch</h4>
-            <p class="card-meta">2019 – 2021</p>
-            <ul>
-              <li>Taught high school students foundational CS concepts in Python and SNAP.</li>
-              <li>Led orientation &amp; social media for incoming college students, combining tech, storytelling, and community building.</li>
-            </ul>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- Education -->
-    <section id="education" class="section">
-      <div class="container">
-        <h2 class="section-title">Education</h2>
-        <div class="cards-grid">
-          <article class="card">
-            <h3>CUNY Hunter College</h3>
-            <h4>M.A. in Computer Science</h4>
-            <p class="card-meta">Jan 2024 – May 2026 (expected)</p>
-            <p class="card-note">
-              Focus: Algorithms, Machine Learning, Complexity &amp; Theory of Computation.
-            </p>
-          </article>
-
-          <article class="card">
-            <h3>Pennsylvania State University</h3>
-            <h4>B.S. in Social Data Analytics</h4>
-            <p class="card-meta">Aug 2020 – May 2023</p>
-            <p class="card-note">
-              Coursework: Machine Learning for Data Analytics, Data Management, Text as Data,
-              Programming Models for Big Data. Happy Valley LaunchBox recipient.
-            </p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- Projects -->
-    <section id="projects" class="section alt">
-      <div class="container">
-        <h2 class="section-title">Selected Projects</h2>
-        <p class="section-subtitle">
-          A mix of analytics, machine learning, and storytelling. More details on my GitHub.
-        </p>
-        <div class="cards-grid">
-          <article class="card project-card">
-            <h3>Amazon Fake Review Detection &amp; Trustworthy Recommendations</h3>
-            <p class="card-meta">Python · ML · BLAIR · Tableau</p>
-            <p>
-              Built an ensemble of models (SVC, Decision Trees, Logistic Regression) to classify fake
-              Amazon product reviews and combined them with BLaIR embeddings to surface more reliable
-              product recommendations.
-            </p>
-            <a
-              href="https://github.com/nisargakadam"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="card-link"
-            >
-              View on GitHub ↗
-            </a>
-          </article>
-
-          <article class="card project-card">
-            <h3>NBA Playoff Win Probability Model</h3>
-            <p class="card-meta">Python · RandomForest · nba_api</p>
-            <p>
-              Collected playoff game logs using <code>nba_api</code> and modeled win probabilities
-              with a Random Forest classifier using shooting efficiency, rebounds, assists, turnovers,
-              and plus/minus. Visualized team trends and feature impact with Matplotlib/Seaborn.
-            </p>
-          </article>
-
-          <article class="card project-card">
-            <h3>Government Spending &amp; Female Labor Participation</h3>
-            <p class="card-meta">Python · Ridge Regression</p>
-            <p>
-              Modeled the relationship between social spending and female labor participation using
-              Ridge Regression, exploring policy-level drivers of women’s workforce participation.
-            </p>
-          </article>
-
-          <article class="card project-card">
-            <h3>Health &amp; Behavior Modeling</h3>
-            <p class="card-meta">Python · PCA · SVM · RandomForest</p>
-            <p>
-              Built models to predict sleep from Fitbit activity logs and identify heart-attack risk
-              using PCA + SVM. Focused on feature engineering and interpretability for non-technical audiences.
-            </p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- Skills -->
-    <section id="skills" class="section">
-      <div class="container">
-        <h2 class="section-title">Skills</h2>
-        <div class="skills-grid">
-          <div>
-            <h3 class="skills-heading">Languages &amp; Data</h3>
-            <div class="pill-row">
-              <span class="pill">Python</span>
-              <span class="pill">R</span>
-              <span class="pill">SQL / NoSQL</span>
-              <span class="pill">Java</span>
-              <span class="pill">JavaScript</span>
-              <span class="pill">HTML/CSS</span>
-            </div>
-          </div>
-          <div>
-            <h3 class="skills-heading">Tools &amp; Platforms</h3>
-            <div class="pill-row">
-              <span class="pill">Tableau</span>
-              <span class="pill">Power BI</span>
-              <span class="pill">Mediaocean Prisma</span>
-              <span class="pill">Google Campaign Manager</span>
-              <span class="pill">DoubleVerify</span>
-              <span class="pill">Jupyter</span>
-            </div>
-          </div>
-          <div>
-            <h3 class="skills-heading">ML &amp; Big Data</h3>
-            <div class="pill-row">
-              <span class="pill">Scikit-learn</span>
-              <span class="pill">TensorFlow / Keras</span>
-              <span class="pill">Spark</span>
-              <span class="pill">Hadoop</span>
-            </div>
-          </div>
-          <div>
-            <h3 class="skills-heading">Other</h3>
-            <div class="pill-row">
-              <span class="pill">Git &amp; GitHub</span>
-              <span class="pill">LaTeX</span>
-              <span class="pill">Stakeholder storytelling</span>
-              <span class="pill">Client-ready decks</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Contact -->
-    <section id="contact" class="section alt">
-      <div class="container">
-        <h2 class="section-title">Let’s Connect</h2>
-        <p class="section-subtitle">
-          Interested in data, AI, media, or just want to talk about hoops &amp; analytics?
-          Reach out — I’m always up for a good conversation.
+    <section>
+        <p>
+            I'm a CS grad student + data analyst exploring the intersection of 
+            <strong>machine learning, security, and real-world systems risk</strong>. 
+            I build projects that make AI safer, more interpretable, and more aligned with 
+            how people actually use technology.
         </p>
 
-        <div class="contact-grid">
-          <div>
-            <h3>Say hi</h3>
-            <p>
-              The easiest way to reach me is by email or LinkedIn.
-              I’m open to intern roles, full-time opportunities, and collaborations.
-            </p>
-            <ul class="contact-list">
-              <li>📧 <a href="mailto:nisargakadam@gmail.com">nisargakadam@gmail.com/a></li>
-              <li>💼 <a href="https://www.linkedin.com/in/nisarga-kadam/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
-              <li>📊 <a href="https://github.com/nisargakadam" target="_blank" rel="noopener noreferrer">GitHub</a></li>
-              
-            </ul>
-          </div>
+        <p>
+            Currently exploring:<br>
+            • ML security vulnerabilities (data poisoning, evasion) <br>
+            • Trust + safety for consumer AI products <br>
+            • Detection systems for authenticity, fraud, and anomalous behavior <br>
+        </p>
 
-          <form class="contact-form" action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST">
-            <label>
-              Name
-              <input type="text" name="name" required />
-            </label>
-            <label>
-              Email
-              <input type="email" name="email" required />
-            </label>
-            <label>
-              Message
-              <textarea name="message" rows="4" required></textarea>
-            </label>
-            <button type="submit" class="btn primary full-width">Send Message</button>
-          </form>
+        <h3>Featured Projects</h3>
+        <div class="projects">
+            
+            <div class="project-card">
+                <h3>🛡 Amazon Review Fraud Detection (ML)</h3>
+                <p>
+                    Built an ML pipeline analyzing real Amazon product reviews to detect 
+                    low-quality or suspicious content. Used NLP embeddings + anomaly 
+                    detection to flag manipulative behavior.
+                </p>
+                <a href="https://github.com/nisargakadam/Amazon-Fake-Review-Detection">View Project →</a>
+            </div>
+
+            <div class="project-card">
+                <h3>🏀 Courtside Bestie — LLM NBA Explainer</h3>
+                <p>
+                    A conversational basketball “explainer bot” exploring model reasoning, 
+                    prompt safety, and user-context alignment using nba_api and custom evaluation.
+                </p>
+                <a href="https://github.com/nisargakadam/CourtsideBestie">View Project →</a>
+            </div>
+
+            <div class="project-card">
+                <h3>📊 ETL Pipeline for Large-Scale Amazon Data</h3>
+                <p>
+                    Designed a secure, reproducible ETL pipeline using Polars + DuckDB 
+                    to process millions of reviews while ensuring data lineage and trust.
+                </p>
+                <a href="https://github.com/nisargakadam/amazon-etl">View Project →</a>
+            </div>
         </div>
-      </div>
     </section>
-  </main>
-
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container footer-inner">
-      <span>© <span id="year"></span> Nisarga Kadam</span>
-      <span class="footer-dots">•</span>
-      <span>Built with ♡ &amp; GitHub Pages</span>
-    </div>
-  </footer>
-
-  <script>
-    // Mobile nav toggle
-    const navToggle = document.getElementById("nav-toggle");
-    const navLinks = document.getElementById("nav-links");
-
-    navToggle.addEventListener("click", () => {
-      navLinks.classList.toggle("nav-open");
-    });
-
-    // Close nav on link click (mobile)
-    navLinks.querySelectorAll("a").forEach((link) => {
-      link.addEventListener("click", () => {
-        navLinks.classList.remove("nav-open");
-      });
-    });
-
-    // Current year
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
 </body>
 </html>
