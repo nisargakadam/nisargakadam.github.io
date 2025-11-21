@@ -1,4 +1,4 @@
-const API_BASE = "http://localhost:4000"; // change to your backend URL when deployed
+const API_BASE = "https://bookshelf-9wlb.onrender.com";
 
 let currentShelf = "top";
 let currentRating = 0;
