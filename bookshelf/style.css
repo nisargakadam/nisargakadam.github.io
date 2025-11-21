@@ -1,0 +1,304 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  background: radial-gradient(circle at top, #ffeefd 0, #f7f5ff 40%, #fdf9f3);
+  color: #3b3040;
+}
+
+.wrapper {
+  max-width: 900px;
+  margin: 40px auto;
+  position: relative;
+  padding-bottom: 80px;
+}
+
+.title {
+  text-align: center;
+  font-size: 32px;
+  margin-bottom: 40px;
+  letter-spacing: 1px;
+}
+
+/* Shelves */
+
+.shelf-section {
+  margin-bottom: 60px;
+}
+
+.shelf-label {
+  font-size: 14px;
+  margin-left: 20px;
+  margin-bottom: 8px;
+  text-transform: lowercase;
+  color: #84758d;
+}
+
+.shelf {
+  width: 100%;
+  height: 18px;
+  border-radius: 16px;
+  background: linear-gradient(to right, #e1c7b5, #f0d6c2);
+  position: relative;
+  padding: 0 40px;
+  display: flex;
+  align-items: flex-end;
+  gap: 16px;
+}
+
+/* Books */
+
+.book {
+  width: 46px;
+  height: 175px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(71, 55, 80, 0.18);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.book:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 18px rgba(71, 55, 80, 0.26);
+}
+
+.spine-text {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font-size: 10px;
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+/* Add button */
+
+.add-button {
+  position: fixed;
+  right: 40px;
+  bottom: 40px;
+  padding: 14px 24px;
+  border-radius: 999px;
+  border: none;
+  background: #6b5b95;
+  color: #fff;
+  font-size: 14px;
+  text-transform: lowercase;
+  cursor: pointer;
+  box-shadow: 0 10px 18px rgba(70, 52, 104, 0.35);
+}
+
+/* Modals */
+
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(34, 22, 40, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 20;
+}
+
+.hidden {
+  display: none;
+}
+
+.modal-content,
+.detail-content {
+  width: 500px;
+  max-width: 90vw;
+  background: #fffaf4;
+  border-radius: 22px;
+  padding: 24px 28px 20px;
+  box-shadow: 0 18px 40px rgba(35, 19, 56, 0.35);
+}
+
+.modal-content h2 {
+  text-transform: lowercase;
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+/* Form elements */
+
+label {
+  display: block;
+  font-size: 12px;
+  text-transform: lowercase;
+  margin: 8px 0 4px;
+  color: #7d6b7f;
+}
+
+input[type="text"],
+textarea {
+  width: 100%;
+  padding: 7px 9px;
+  border-radius: 10px;
+  border: 1px solid #efd7cc;
+  background: #fffdf9;
+  font-size: 13px;
+  outline: none;
+}
+
+input[type="text"]:focus,
+textarea:focus {
+  border-color: #c9b0ff;
+  box-shadow: 0 0 0 2px rgba(201, 176, 255, 0.3);
+}
+
+/* Toggle */
+
+.shelf-toggle {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.toggle-button {
+  flex: 1;
+  border-radius: 999px;
+  border: 1px solid #6b5b95;
+  padding: 6px 0;
+  font-size: 12px;
+  text-transform: lowercase;
+  background: #f7f3ff;
+  cursor: pointer;
+  color: #6b5b95;
+}
+
+.toggle-button.active {
+  background: #6b5b95;
+  color: #fff;
+}
+
+/* Stars */
+
+.stars span {
+  font-size: 20px;
+  cursor: pointer;
+  color: #e1d3b3;
+}
+
+.stars span.active {
+  color: #ffd166;
+}
+
+/* Impact row */
+
+.impact-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  color: #7d6b7f;
+}
+
+input[type="range"] {
+  flex: 1;
+}
+
+/* Modal buttons */
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.text-button {
+  background: transparent;
+  border: none;
+  font-size: 13px;
+  cursor: pointer;
+  color: #8c7b98;
+}
+
+.primary-button {
+  background: #6b5b95;
+  color: #fff;
+  border-radius: 999px;
+  padding: 7px 18px;
+  border: none;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+/* Detail modal */
+
+.detail-content {
+  position: relative;
+}
+
+.close-button {
+  position: absolute;
+  right: 18px;
+  top: 14px;
+  border: none;
+  background: transparent;
+  font-size: 22px;
+  cursor: pointer;
+  color: #8a769c;
+}
+
+.detail-author {
+  margin-top: 4px;
+  margin-bottom: 16px;
+  font-size: 13px;
+  color: #827085;
+}
+
+.detail-row {
+  margin-bottom: 12px;
+}
+
+.detail-label {
+  font-size: 11px;
+  text-transform: lowercase;
+  display: block;
+  margin-bottom: 2px;
+  color: #99849f;
+}
+
+.genre-pill {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: #f4d7ff;
+  font-size: 11px;
+  color: #5c476a;
+}
+
+.detail-body {
+  font-size: 13px;
+  line-height: 1.4;
+  margin: 4px 0 0;
+}
+
+/* Detail actions */
+
+.detail-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 18px;
+}
+
+.danger-button {
+  background: #ffb3c1;
+  color: #73253c;
+  border-radius: 999px;
+  padding: 7px 18px;
+  border: none;
+  font-size: 13px;
+  cursor: pointer;
+}
