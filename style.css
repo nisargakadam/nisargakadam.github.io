@@ -1,15 +1,15 @@
 :root {
-  --bg: #ffffff;
-  --bg-alt: #f7f6ff;
-  --text: #1a1a1a;
-  --muted: #6b7280;
-  --accent: #6b2aff;        /* deep purple */
-  --accent-soft: rgba(107, 42, 255, 0.12);
-  --card-bg: #ffffff;
-  --border-subtle: rgba(0, 0, 0, 0.08);
+  --bg: #fff7fb;                          /* soft blush background */
+  --bg-alt: #ffeef7;                      /* slightly deeper pink for alt sections */
+  --text: #231018;                        /* deep berry text */
+  --muted: #8b6476;                       /* muted mauve text */
+  --accent: #ff4f9a;                      /* main pink accent */
+  --accent-soft: rgba(255, 79, 154, 0.12);/* soft pink wash */
+  --card-bg: #ffffff;                     /* white cards on pink bg */
+  --border-subtle: rgba(255, 79, 154, 0.18);
   --radius-lg: 1.25rem;
   --radius-xl: 1.75rem;
-  --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.08);
+  --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.06);
   --max-width: 1050px;
 }
 
@@ -69,7 +69,7 @@ body {
   top: 0;
   z-index: 50;
   backdrop-filter: blur(12px);
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 245, 250, 0.92); /* light pink glass */
   border-bottom: 1px solid var(--border-subtle);
 }
 
@@ -177,7 +177,7 @@ body {
 .hero-description {
   font-size: 0.98rem;
   max-width: 40rem;
-  color: #3a3a3a;
+  color: #3a2431;
   margin-bottom: 1.5rem;
   line-height: 1.6;
 }
@@ -200,7 +200,7 @@ body {
 /* Hero Card */
 
 .hero-card-inner {
-  background: #ffffff;
+  background: #fffdfd;
   padding: 1.6rem 1.4rem;
   border-radius: var(--radius-xl);
   border: 1px solid var(--border-subtle);
@@ -217,7 +217,7 @@ body {
 
 .hero-card-inner ul {
   padding-left: 1.1rem;
-  color: #3d3d3d;
+  color: #3a2431;
   margin-bottom: 1.25rem;
 }
 
@@ -293,12 +293,12 @@ body {
 }
 
 .card li {
-  color: #3a3a3a;
+  color: #3a2431;
   font-size: 0.92rem;
 }
 
 .card-note {
-  color: #4b5563;
+  color: #4b3040;
 }
 
 /* Skills */
@@ -314,8 +314,8 @@ body {
   padding: 0.35rem 0.8rem;
   border-radius: 999px;
   font-size: 0.8rem;
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  background: #faf8ff;
+  border: 1px solid rgba(255, 79, 154, 0.25);
+  background: #ffe6f3;
   color: var(--accent);
 }
 
@@ -348,7 +348,7 @@ body {
 }
 
 .contact-form {
-  background: #ffffff;
+  background: #fffdfd;
   padding: 1.5rem;
   border-radius: var(--radius-lg);
   border: 1px solid var(--border-subtle);
@@ -359,9 +359,9 @@ body {
 .contact-form textarea {
   width: 100%;
   padding: 0.55rem;
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 79, 154, 0.32);
   border-radius: 0.6rem;
-  background: #f9f9ff;
+  background: #fff7fb;
 }
 
 .contact-form input:focus,
@@ -400,7 +400,7 @@ body {
     right: 1rem;
     top: 54px;
     flex-direction: column;
-    background: white;
+    background: #fffdfd;
     padding: 1rem;
     border-radius: 0.9rem;
     border: 1px solid var(--border-subtle);
