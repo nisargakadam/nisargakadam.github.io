@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nisarga Kadam | AI · Security · Data</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+    
+    :root {
+      --primary-dark: #1a1a1a;
+      --primary: #88b04b;
+      --secondary: #ff6b9d;
+      --primary-light: #a8c97f;
+      --secondary-light: #ffb3d1;
+      --accent: #c4d4a8;
+      --bg-light: #fef9f9;
+      --text-main: #1a1a1a;
+      --text-secondary: #666666;
+      --gradient-1: linear-gradient(135deg, #88b04b 0%, #ff6b9d 100%);
+      --gradient-2: linear-gradient(135deg, #ffb3d1 0%, #a8c97f 100%);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #ffffff;
+      color: var(--text-main);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* NAVBAR */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: rgba(26, 26, 26, 0.95);
+      backdrop-filter: blur(12px);
+      padding: 16px 0;
+      transition: all 0.3s ease;
+      border-bottom: 1px solid rgba(136, 176, 75, 0.2);
+      box-shadow: 0 2px 10px rgba(255, 107, 157, 0.1);
+    }
+
+    .navbar.scrolled {
+      padding: 12px 0;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .navbar-brand {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #ffffff;
+      letter-spacing: -0.02em;
+      opacity: 0;
+      animation: fadeInDown 0.6s ease forwards;
+    }
+
+    .navbar-links {
+      display: flex;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .navbar-links a {
+      color: rgba(255, 255, 255, 0.85);
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      position: relative;
+      opacity: 0;
+      animation: fadeInDown 0.6s ease forwards;
+    }
+
+    .navbar-links a:nth-child(1) { animation-delay: 0.1s; }
+    .navbar-links a:nth-child(2) { animation-delay: 0.15s; }
+    .navbar-links a:nth-child(3) { animation-delay: 0.2s; }
+    .navbar-links a:nth-child(4) { animation-delay: 0.25s; }
+    .navbar-links a:nth-child(5) { animation-delay: 0.3s; }
+    .navbar-links a:nth-child(6) { animation-delay: 0.35s; }
+
+    .navbar-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 100%);
+      transition: width 0.3s ease;
+    }
+
+    .navbar-links a:hover {
+      color: #ffffff;
+    }
+
+    .navbar-links a:hover::after {
+      width: 100%;
+    }
+
+    /* HERO SECTION */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 100px 32px 80px;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #404040 100%);
+      z-index: 0;
+    }
+
+    .hero-bg::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: 
+        radial-gradient(circle at 20% 50%, rgba(136, 176, 75, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(255, 107, 157, 0.15) 0%, transparent 50%);
+      animation: pulse 8s ease-in-out infinite;
+    }
+
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("https://github.com/nisargakadam/nisargakadam.github.io/blob/main/imagebg.jpg?raw=true");
+      background-size: cover;
+      background-position: center;
+      opacity: 0.15;
+      mix-blend-mode: overlay;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.6; }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 1200px;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .hero-text {
+      color: #ffffff;
+      opacity: 0;
+      animation: fadeInUp 0.8s ease 0.3s forwards;
+    }
+
+    .hero-label {
+      display: inline-block;
+      padding: 6px 14px;
+      background: rgba(136, 176, 75, 0.15);
+      border: 1px solid rgba(255, 107, 157, 0.3);
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #ffcfe0;
+      margin-bottom: 20px;
+      letter-spacing: 0.02em;
+    }
+
+    .hero-title {
+      font-size: 4rem;
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 16px;
+      background: linear-gradient(135deg, #ffffff 0%, #ffcfe0 50%, #d4e5c4 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-subtitle {
+      font-size: 1.3rem;
+      color: rgba(255, 255, 255, 0.8);
+      margin-bottom: 24px;
+      font-weight: 400;
+    }
+
+    .hero-typing {
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: var(--secondary-light);
+      margin-bottom: 32px;
+      min-height: 1.6em;
+    }
+
+    .hero-typing span {
+      border-right: 2px solid #ffffff;
+      padding-right: 4px;
+      animation: blink 0.8s step-end infinite;
+    }
+
+    @keyframes blink {
+      50% { border-color: transparent; }
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 28px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      border-radius: 12px;
+      font-size: 1rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      border: 2px solid transparent;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #ffffff;
+      border-color: var(--primary);
+      box-shadow: 0 4px 20px rgba(136, 176, 75, 0.3);
+    }
+
+    .btn-primary:hover {
+      background: #6f8f3d;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(136, 176, 75, 0.4);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: #ffffff;
+      border-color: rgba(255, 255, 255, 0.3);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.5);
+      transform: translateY(-2px);
+    }
+
+    .hero-tagline {
+      font-size: 1rem;
+      color: rgba(255, 255, 255, 0.7);
+      line-height: 1.7;
+      max-width: 540px;
+    }
+
+    .hero-tagline strong {
+      color: rgba(255, 255, 255, 0.95);
+      font-weight: 600;
+    }
+
+    .hero-card {
+      background: rgba(26, 26, 26, 0.7);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(168, 201, 127, 0.2);
+      border-radius: 20px;
+      padding: 32px;
+      box-shadow: 0 20px 60px rgba(255, 107, 157, 0.1);
+      opacity: 0;
+      animation: fadeInUp 0.8s ease 0.5s forwards;
+    }
+
+    .hero-card-label {
+      display: inline-block;
+      padding: 6px 12px;
+      background: rgba(255, 107, 157, 0.15);
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #ffcfe0;
+      margin-bottom: 16px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .hero-card h3 {
+      font-size: 1.3rem;
+      color: #ffffff;
+      margin-bottom: 20px;
+      font-weight: 700;
+    }
+
+    .hero-card ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .hero-card li {
+      color: rgba(255, 255, 255, 0.8);
+      margin-bottom: 12px;
+      padding-left: 24px;
+      position: relative;
+      font-size: 0.95rem;
+    }
+
+    .hero-card li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--secondary-light);
+      font-weight: 700;
+    }
+
+    /* MAIN CONTENT */
+    main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 80px 32px;
+    }
+
+    section {
+      margin-bottom: 100px;
+      opacity: 0;
+      animation: fadeInUp 0.8s ease forwards;
+      animation-timeline: view();
+      animation-range: entry 0% cover 30%;
+    }
+
+    .section-header {
+      margin-bottom: 48px;
+    }
+
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: var(--primary-dark);
+      margin-bottom: 12px;
+      letter-spacing: -0.02em;
+    }
+
+    .section-subtitle {
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      max-width: 700px;
+    }
+
+    /* ABOUT SECTION */
+    #about p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: var(--text-main);
+      margin-bottom: 24px;
+    }
+
+    #about strong {
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    #about ul {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+      list-style: none;
+      margin-top: 32px;
+    }
+
+    #about li {
+      padding: 20px;
+      background: var(--bg-light);
+      border: 1px solid rgba(136, 176, 75, 0.2);
+      border-radius: 12px;
+      color: var(--text-main);
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      position: relative;
+      padding-left: 52px;
+    }
+
+    #about li::before {
+      content: '✓';
+      position: absolute;
+      left: 20px;
+      top: 20px;
+      width: 24px;
+      height: 24px;
+      background: var(--primary);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+
+    #about li:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(136, 176, 75, 0.2);
+      border-color: var(--primary);
+    }
+
+    /* PROJECT CARDS */
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 32px;
+    }
+
+    .project-card {
+      background: #ffffff;
+      border: 1px solid rgba(136, 176, 75, 0.2);
+      border-radius: 16px;
+      padding: 32px;
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 100%);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s ease;
+    }
+
+    .project-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .project-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(136, 176, 75, 0.2);
+      border-color: var(--primary);
+    }
+
+    .project-card h3 {
+      font-size: 1.25rem;
+      color: var(--primary-dark);
+      margin-bottom: 12px;
+      font-weight: 700;
+      line-height: 1.4;
+    }
+
+    .project-meta {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      margin-bottom: 16px;
+      font-weight: 500;
+    }
+
+    .project-card p {
+      font-size: 0.95rem;
+      line-height: 1.7;
+      color: var(--text-main);
+      margin-bottom: 20px;
+    }
+
+    .project-card strong {
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    .project-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: all 0.3s ease;
+    }
+
+    .project-link:hover {
+      gap: 10px;
+      color: var(--primary-dark);
+    }
+
+    /* EXPERIENCE & EDUCATION */
+    .item-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .item-list li {
+      padding: 32px;
+      background: var(--bg-light);
+      border: 1px solid rgba(136, 176, 75, 0.2);
+      border-radius: 16px;
+      margin-bottom: 24px;
+      transition: all 0.3s ease;
+    }
+
+    .item-list li:hover {
+      transform: translateX(8px);
+      box-shadow: 0 8px 24px rgba(136, 176, 75, 0.15);
+      border-color: var(--primary);
+    }
+
+    .item-role {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--primary-dark);
+      margin-bottom: 8px;
+    }
+
+    .item-meta {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      margin-bottom: 16px;
+      font-weight: 500;
+    }
+
+    .item-list p {
+      font-size: 1rem;
+      line-height: 1.7;
+      color: var(--text-main);
+    }
+
+    /* CONTACT */
+    #contact p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      margin-bottom: 24px;
+    }
+
+    #contact a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      border-bottom: 2px solid transparent;
+    }
+
+    #contact a:hover {
+      color: var(--primary-dark);
+      border-bottom-color: var(--primary-dark);
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--primary-dark);
+      color: rgba(255, 255, 255, 0.8);
+      padding: 48px 32px;
+      text-align: center;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .footer-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 100%);
+      transition: width 0.3s ease;
+    }
+
+    .footer-links a:hover {
+      color: var(--secondary-light);
+    }
+
+    .footer-links a:hover::after {
+      width: 100%;
+    }
+
+    footer p {
+      font-size: 0.9rem;
+      opacity: 0.7;
+    }
+
+    /* ANIMATIONS */
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 968px) {
+      .hero-content {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .hero-title {
+        font-size: 3rem;
+      }
+
+      .navbar-links {
+        gap: 20px;
+      }
+
+      .projects {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .nav-container {
+        flex-direction: column;
+        gap: 16px;
+        align-items: flex-start;
+      }
+
+      .navbar-links {
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+
+      .hero {
+        padding: 80px 20px 60px;
+      }
+
+      .hero-title {
+        font-size: 2.5rem;
+      }
+
+      .hero-subtitle {
+        font-size: 1.1rem;
+      }
+
+      main {
+        padding: 60px 20px;
+      }
+
+      .section-title {
+        font-size: 2rem;
+      }
+
+      .btn {
+        padding: 12px 24px;
+        font-size: 0.95rem;
+      }
+    }
+  
+    /* BOOKSHELF (INLINE, DREW-STYLE) */
+    #bookshelf {
+      max-width: 760px;
+      margin: 0 auto 120px;
+    }
+    #bookshelf h2 {
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      margin-bottom: 8px;
+    }
+    #bookshelf p {
+      color: var(--text-secondary);
+      margin-bottom: 16px;
+      font-size: 0.95rem;
+    }
+    #bookshelf .gr_grid_book_container {
+      float: left;
+      width: 64px;
+      height: 96px;
+      margin: 6px 10px 6px 0;
+      overflow: hidden;
+      border-radius: 6px;
+    }
+    #bookshelf .gr_grid_book_container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    #bookshelf .gr_grid_branding {
+      display: none;
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <div class="navbar-brand">Nisarga Kadam</div>
+      <div class="navbar-links">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#education">Education</a>
+        <a href="#contact">Contact</a>
+        <a href="/bookshelf/" target="_blank">Bookshelf</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <div class="hero-text">
+        <span class="hero-label">CS Graduate Student</span>
+        <h1 class="hero-title">Hi, I'm Nisarga</h1>
+        <p class="hero-subtitle">Investment Management Associate · Data / AI Security</p>
+        
+        <div class="hero-typing">
+          <span id="typing-target"></span>
+        </div>
+
+        <div class="hero-buttons">
+          <a class="btn btn-primary" href="Kadam_CyberResume.pdf" target="_blank">View Résumé</a>
+          <a class="btn btn-secondary" href="#projects">Explore Projects</a>
+        </div>
+
+        <p class="hero-tagline">
+          I work at the intersection of <strong>AI security, machine learning, and data systems</strong> —
+          with projects in fraud detection, model reliability, and real-world analytics.
+        </p>
+      </div>
+
+      <div class="hero-card">
+        <span class="hero-card-label">Focus Areas</span>
+        <h3>AI Trust, Integrity & Reliability</h3>
+        <ul>
+          <li>Fake review & anomaly detection</li>
+          <li>LLM reasoning / robustness audits</li>
+          <li>Media, marketing, and decision systems</li>
+        </ul>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main>
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="section-header">
+        <h2 class="section-title">About</h2>
+      </div>
+      <p>
+        I'm a CS graduate student and data analyst exploring the intersection of
+        <strong>AI security, machine learning, and trust & integrity systems</strong>.
+        I like building hands-on projects that test how models behave under real-world conditions —
+        focusing on robustness, risk, and data quality.
+      </p>
+      <p>Currently exploring:</p>
+      <ul>
+        <li>LLM reasoning failures & robustness evaluation</li>
+        <li>Fraud / anomaly detection in digital platforms</li>
+        <li>Interpretability & trustworthy AI predictions</li>
+        <li>Data integrity and responsible ML systems</li>
+      </ul>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+      <div class="section-header">
+        <h2 class="section-title">Featured Projects</h2>
+        <p class="section-subtitle">
+          A few projects that reflect how I think about AI trust, security, and data-driven systems.
+        </p>
+      </div>
+
+      <div class="projects">
+        <article class="project-card">
+          <h3>🛡 Fake Review Detection (AI Trust & Integrity)</h3>
+          <div class="project-meta">Dec 2024 · NLP · HuggingFace BLAiR · Tableau</div>
+          <p>
+            Built an NLP + HuggingFace BLAiR pipeline detecting fraudulent Amazon reviews
+            with an <strong>81% F1 score</strong>. Identified behavioral patterns
+            (e.g., short overly-positive reviews 32% more likely to be fake) and visualized
+            anomaly clusters in Tableau to strengthen platform trust.
+          </p>
+          <a class="project-link" href="https://github.com/nisargakadam/Influence-of-Fake-Reviews-on-Quality-Amazon-Product-Recommendation" target="_blank">
+            View Project →
+          </a>
+        </article>
+
+        <article class="project-card">
+          <h3>🏀 NBA Playoff Prediction (Pattern & Outlier Analysis)</h3>
+          <div class="project-meta">May 2025 · Random Forest · nba_api</div>
+          <p>
+            Trained and evaluated a Random Forest model on <strong>96+ playoff logs</strong> to
+            identify outlier performance patterns and surface the most predictive KPIs influencing
+            game outcomes. Explored model consistency, variance, and sensitivity across team contexts.
+          </p>
+          <a class="project-link" href="https://github.com/nisargakadam/nba-ecf-win-predictor" target="_blank">
+            View Project →
+          </a>
+        </article>
+
+        <article class="project-card">
+          <h3>📊 Government Spending & Female Labor Participation</h3>
+          <div class="project-meta">May 2023 · Ridge Regression · Policy Data</div>
+          <p>
+            Applied Ridge Regression with grid search to analyze government spending impacts while
+            ensuring data integrity through multicollinearity checks, consistent feature selection,
+            and reproducible preprocessing pipelines. Highlighted policy implications and structural
+            bias considerations.
+          </p>
+          <a class="project-link" href="https://github.com/nisargakadam/Government-Spending-on-FLPR" target="_blank">
+            View Project →
+          </a>
+        </article>
+
+        <article class="project-card">
+          <h3>📚 Personal Bookshelf (Goodreads-Style UI)</h3>
+          <div class="project-meta">2025 · Frontend · Backend · Pastel UI</div>
+          <p>
+            Built a full-stack, pastel bookshelf app with editable book entries, 
+            ratings, and emotional impact sliders — inspired by a Twitter bookshelf 
+            layout. Frontend in vanilla JS + CSS, backend in Node/Express + SQLite.
+          </p>
+          <a class="project-link" href="bookshelf/" target="_blank">
+            View Live Bookshelf →
+          </a>
+        </article>
+      </div>
+    </section>
+
+
+    <!-- BOOKSHELF -->
+    <section id="bookshelf">
+      <h2>//shelf//</h2>
+      <p>
+        A snapshot of what I’ve been reading.
+        <a href="https://www.goodreads.com/user/show/163379889-nisarga" target="_blank" rel="noopener">
+          Full list →
+        </a>
+      </p>
+
+      <div id="gr_grid_widget_1765775282"></div>
+
+      <script
+        src="https://www.goodreads.com/review/grid_widget/163379889?cover_size=&hide_link=&hide_title=&num_books=20&order=&shelf=&sort=&widget_id=1765775282"
+        type="text/javascript"
+        charset="utf-8">
+      </script>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience">
+      <div class="section-header">
+        <h2 class="section-title">Experience</h2>
+      </div>
+      <ul class="item-list">
+        <li>
+          <div class="item-role">Investment Management Associate – Publicis Health Media</div>
+          <div class="item-meta">New York, NY · 2025 – Present</div>
+          <p>
+            Oversee multi-channel oncology media budgets, analyze performance, optimize allocations,
+            and collaborate on financial stewardship using tools like Prisma, CM360, and Tableau.
+          </p>
+        </li>
+        <li>
+          <div class="item-role">Data Analyst Intern – Raja Foods & Vegetables</div>
+          <div class="item-meta">Remote · 2023 – 2025</div>
+          <p>
+            Built forecasting models and dashboards for sales, waste reduction, and seasonal inventory.
+            Used Excel, R, and QuickBooks to turn messy data into actionable decisions.
+          </p>
+        </li>
+        <li>
+          <div class="item-role">Co-Founder – AIMADETHIS</div>
+          <div class="item-meta">Remote · 2021 – 2023</div>
+          <p>
+            Led a generative AI–driven sustainable fashion project, building analytics dashboards,
+            marketing funnels, and experimentation pipelines at the intersection of data, design,
+            and user behavior.
+          </p>
+        </li>
+      </ul>
+    </section>
+
+    <!-- EDUCATION -->
+    <section id="education">
+      <div class="section-header">
+        <h2 class="section-title">Education</h2>
+      </div>
+      <ul class="item-list">
+        <li>
+          <div class="item-role">M.A. in Computer Science — CUNY Hunter College</div>
+          <div class="item-meta">Expected May 2027 · New York, NY</div>
+          <p>
+            Coursework in algorithms, machine learning, systems, and theory, with an interest in
+            security-adjacent applications and data-intensive computing.
+          </p>
+        </li>
+      </ul>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="section-header">
+        <h2 class="section-title">Contact</h2>
+        <p class="section-subtitle">
+          Open to chatting about AI security, data science, media/tech, and fun side projects.
+        </p>
+      </div>
+      <p>
+        💌 Email: <a href="mailto:nisarga.kadam1@gmail.com">nisarga.kadam1@gmail.com</a><br />
+        💼 LinkedIn: <a href="https://www.linkedin.com/in/nisarga-kadam" target="_blank" rel="noopener">linkedin.com/in/nisarga-kadam</a><br />
+        💻 GitHub: <a href="https://github.com/nisargakadam" target="_blank" rel="noopener">github.com/nisargakadam</a>
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-links">
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#experience">Experience</a>
+      <a href="#education">Education</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <p>© <span id="year"></span> Nisarga Kadam</p>
+  </footer>
+
+  <script>
+    // Footer year
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Navbar shrink on scroll (optional, but your CSS references .scrolled)
+    const navbar = document.getElementById("navbar");
+    window.addEventListener("scroll", () => {
+      if (!navbar) return;
+      navbar.classList.toggle("scrolled", window.scrollY > 10);
+    });
+
+    // Typing effect
+    document.addEventListener("DOMContentLoaded", () => {
+      const el = document.getElementById("typing-target");
+      if (!el) return;
+
+      const phrases = [
+        "Investment Management Associate · Data / AI Security"
+      ];
+
+      let phraseIndex = 0;
+      let charIndex = 0;
+      let deleting = false;
+
+      function tick() {
+        const current = phrases[phraseIndex];
+
+        if (!deleting) {
+          charIndex++;
+          el.textContent = current.slice(0, charIndex);
+
+          if (charIndex === current.length) {
+            deleting = true;
+            setTimeout(tick, 1200);
+            return;
+          }
+          setTimeout(tick, 55);
+        } else {
+          charIndex--;
+          el.textContent = current.slice(0, charIndex);
+
+          if (charIndex === 0) {
+            deleting = false;
+            phraseIndex = (phraseIndex + 1) % phrases.length;
+            setTimeout(tick, 250);
+            return;
+          }
+          setTimeout(tick, 35);
+        }
+      }
+
+      tick();
+    });
+  </script>
+</body>
+</html>
