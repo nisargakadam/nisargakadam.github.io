@@ -30,6 +30,57 @@
     html {
       scroll-behavior: smooth;
     }
+    <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const el = document.getElementById("typing-target");
+    if (!el) return;
+
+    const phrases = [
+      "AI Security · Trust & Integrity",
+      "Machine Learning · Robustness",
+      "Data Systems · Analytics"
+    ];
+
+    let i = 0;        // which phrase
+    let j = 0;        // which char
+    let deleting = false;
+
+    const typeSpeed = 55;
+    const deleteSpeed = 35;
+    const pauseAfterType = 1200;
+    const pauseAfterDelete = 250;
+
+    function tick() {
+      const word = phrases[i];
+
+      if (!deleting) {
+        j++;
+        el.textContent = word.slice(0, j);
+
+        if (j === word.length) {
+          deleting = true;
+          setTimeout(tick, pauseAfterType);
+          return;
+        }
+        setTimeout(tick, typeSpeed);
+      } else {
+        j--;
+        el.textContent = word.slice(0, j);
+
+        if (j === 0) {
+          deleting = false;
+          i = (i + 1) % phrases.length;
+          setTimeout(tick, pauseAfterDelete);
+          return;
+        }
+        setTimeout(tick, deleteSpeed);
+      }
+    }
+
+    tick();
+  });
+</script>
+
 
     body {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
