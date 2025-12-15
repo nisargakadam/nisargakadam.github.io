@@ -29,8 +29,7 @@
 
     html {
       scroll-behavior: smooth;
-    }
-    <script>
+   <script>
   document.addEventListener("DOMContentLoaded", () => {
     const el = document.getElementById("typing-target");
     if (!el) return;
@@ -41,45 +40,34 @@
       "Data Systems · Analytics"
     ];
 
-    let i = 0;        // which phrase
-    let j = 0;        // which char
+    let phraseIndex = 0;
+    let charIndex = 0;
     let deleting = false;
 
-    const typeSpeed = 55;
-    const deleteSpeed = 35;
-    const pauseAfterType = 1200;
-    const pauseAfterDelete = 250;
-
-    function tick() {
-      const word = phrases[i];
+    function typeLoop() {
+      const current = phrases[phraseIndex];
 
       if (!deleting) {
-        j++;
-        el.textContent = word.slice(0, j);
-
-        if (j === word.length) {
+        el.textContent = current.slice(0, ++charIndex);
+        if (charIndex === current.length) {
           deleting = true;
-          setTimeout(tick, pauseAfterType);
+          setTimeout(typeLoop, 1200);
           return;
         }
-        setTimeout(tick, typeSpeed);
       } else {
-        j--;
-        el.textContent = word.slice(0, j);
-
-        if (j === 0) {
+        el.textContent = current.slice(0, --charIndex);
+        if (charIndex === 0) {
           deleting = false;
-          i = (i + 1) % phrases.length;
-          setTimeout(tick, pauseAfterDelete);
-          return;
+          phraseIndex = (phraseIndex + 1) % phrases.length;
         }
-        setTimeout(tick, deleteSpeed);
       }
+      setTimeout(typeLoop, deleting ? 35 : 55);
     }
 
-    tick();
+    typeLoop();
   });
 </script>
+
 
 
     body {
